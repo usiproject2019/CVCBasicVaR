@@ -9,5 +9,5 @@ License: Proprietary. Do not distribute outside of CVC Inc.
 Encoding: UTF-8
 LazyData: true
 Imports: 
-quantmod (>=0.4-13)
+quantmod (>=0.4)
 RoxygenNote: 6.1.1
