@@ -1,0 +1,18 @@
+Portfolio_RCVaR <- function (return, confidence_level, wealth, T) {
+  VCV_Matrix <- cov(return)
+  Portfolio_Volatility <- sqrt (wealth %*% VCV_Matrix %*% wealth)
+  alpha <- qnorm(confidence_level)
+  Portfolio_VaR <- alpha * Portfolio_Volatility * (sqrt(T))
+  Beta_Numerator <- (VCV_Matrix %*% wealth)
+  Beta_Denominator <- as.numeric(wealth %*% VCV_Matrix %*% wealth)
+  Beta <- Beta_Numerator / Beta_Denominator
+  Marginal_VaR <- Beta %*% Portfolio_VaR
+  CVaR <- Marginal_VaR * wealth
+  RCVaR <- CVaR / as.numeric(Portfolio_VaR)
+  return_column_name <- data.frame(vector_column_name = c(colnames(return)))
+  new_column_name <- sub('(^\\w+)\\s.+','\\1',return_column_name$vector_column_name)
+  rownames(RCVaR) <- paste0(new_column_name)
+  colnames(RCVaR) <- paste0("Relative Component VaR (", confidence_level, ", ", T, ")")
+  return(RCVaR)
+  assign("output", RCVaR, envir=globalenv())
+}

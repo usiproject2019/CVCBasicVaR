@@ -1,0 +1,15 @@
+#'@title Price_Download
+
+
+
+Price_Download <- function(ticker, price_type = 1, from, to) {
+  Price <- lapply(ticker, function(i) {(getSymbols(i, from = from, to = to, auto.assign=FALSE, src=)[, price_type])})
+  Price<- do.call(merge, Price)
+  Price<-na.omit(Price)
+  return(Price)
+  }
+
+
+######## TEST
+
+Price_Download("XLE",6, from="2019-05-01", to="2019-07-01")

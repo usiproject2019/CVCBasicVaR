@@ -1,0 +1,36 @@
+## VaR of the Portfolio
+
+Portfolio_VaR <- function (return, confidence_level, wealth, T) {
+  VCV_Matrix <- cov(return)
+  Portfolio_Volatility <- sqrt (wealth %*% VCV_Matrix %*% wealth)
+  alpha <- qnorm(confidence_level)
+  Portfolio_VaR <- alpha * Portfolio_Volatility * (sqrt(T))
+  rownames(Portfolio_VaR) <- paste0("Portfolio VaR (", confidence_level, ", ", T, ")")
+  return(Portfolio_VaR)
+  assign("output", SingleVaR, envir=globalenv())
+}
+  
+
+### TEST
+## 1--------------------------- Download test data
+
+Return_Download <- function (ticker, price_type=4, from, to) {
+  Return <- lapply(ticker, function(i) {(getSymbols(i, from = from, to = to, auto.assign=FALSE)[, price_type])})
+  Return <- do.call(merge, Return)
+  Return <- na.omit(Return)
+  Return <- lapply(Return, function(i) {dailyReturn(i)})
+  Return <- do.call(merge, Return)
+  Return <- Return[-1]
+  colnames(Return)<- paste(ticker, "Daily Return")
+  return(Return)
+}
+MyPortfolio <- c("FORD", "DELL", "GE")
+MyPositions <- c(100000, 90000, 250000)
+
+MyReturns <- Return_Download(MyPortfolio, from="2017-01-01", to="2019-01-01")
+
+## 2-------------------------- Function
+test1 <- Portfolio_VaR(MyReturns, 0.99, MyPositions, 10)
+test2 <- Portfolio_VaR(MyReturns, 0.99, MyPositions, 10)
+
+

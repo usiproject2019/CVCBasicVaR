@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1557656929161.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "2DB7E58E",
+    "lastKnownWriteTime" : 1557666090,
+    "last_content_update" : 1557666090445,
+    "path" : "~/TEST/R/Single_VaR.R",
+    "project_path" : "R/Single_VaR.R",
+    "properties" : {
+        "cursorPosition" : "31,84",
+        "scrollLine" : "18",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

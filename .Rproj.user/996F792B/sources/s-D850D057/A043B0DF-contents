@@ -1,0 +1,42 @@
+Portfolio_CVaR <- function (return, confidence_level, wealth, T) {
+  VCV_Matrix <- cov(return)
+  Portfolio_Volatility <- sqrt (wealth %*% VCV_Matrix %*% wealth)
+  alpha <- qnorm(confidence_level)
+  Portfolio_VaR <- alpha * Portfolio_Volatility * (sqrt(T))
+  Beta_Numerator <- (VCV_Matrix %*% wealth)
+  Beta_Denominator <- as.numeric(wealth %*% VCV_Matrix %*% wealth)
+  Beta <- Beta_Numerator / Beta_Denominator
+  Marginal_VaR <- Beta %*% Portfolio_VaR
+  CVaR <- Marginal_VaR * wealth
+  return_column_name <- data.frame(vector_column_name = c(colnames(return)))
+  new_column_name <- sub('(^\\w+)\\s.+','\\1',return_column_name$vector_column_name)
+  rownames(CVaR) <- paste0(new_column_name)
+  colnames(CVaR) <- paste0("Component VaR (", confidence_level, ", ", T, ")")
+  return(CVaR)
+  assign("output", CVaR, envir=globalenv())
+}
+
+
+----- ### TEST
+  ## 1--------------------------- Download test data
+  
+  Return_Download <- function (ticker, price_type=4, from, to) {
+    Return <- lapply(ticker, function(i) {(getSymbols(i, from = from, to = to, auto.assign=FALSE)[, price_type])})
+    Return <- do.call(merge, Return)
+    Return <- na.omit(Return)
+    Return <- lapply(Return, function(i) {dailyReturn(i)})
+    Return <- do.call(merge, Return)
+    Return <- Return[-1]
+    colnames(Return)<- paste(ticker, "Daily Return")
+    return(Return)
+  }
+  MyPortfolio <- c("GE", "DELL", "FORD")
+  MyPositions <- c(100000, 90000, 250000)
+  
+  MyReturns <- Return_Download(MyPortfolio, from="2017-01-01", to="2019-01-01")
+  
+  ## 2-------------------------- Function
+
+test <- Portfolio_CVaR(MyReturns, 0.99, MyPositions, 10)
+  
+  

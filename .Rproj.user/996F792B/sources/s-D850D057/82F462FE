@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1557667122878.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2773370151",
+    "id" : "82F462FE",
+    "lastKnownWriteTime" : 1557667477,
+    "last_content_update" : 1557667477791,
+    "path" : "~/TEST/R/Portfolio_Relative_Component_VaR.R",
+    "project_path" : "R/Portfolio_Relative_Component_VaR.R",
+    "properties" : {
+        "cursorPosition" : "3,160",
+        "scrollLine" : "0",
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
