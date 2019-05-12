@@ -8,5 +8,5 @@ Description: The goal of this package is to provide some useful function for the
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
-Imports: quantmod
+Depends: quantmod
 RoxygenNote: 6.1.1
