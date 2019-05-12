@@ -1,12 +1,13 @@
 Package: TEST
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Title: Computes the Basic Value at Risk with Parametric Approach
+Version: 0.1..0
+Author: Massimo Caprari, Anastasiya Varvus, Michele Cotugno
+Maintainer: Anastasiya Varvus <anastasiya.varvus@usi.ch>
+Description: The goal of this package is to provide some useful function for the computation of the Value at Risk with a parametric approach.
+License: Proprietary. Do not distribute outside of CVC Inc.
 Encoding: UTF-8
 LazyData: true
+Imports: 
+quantmod (>=0.4-13)
 RoxygenNote: 6.1.1
