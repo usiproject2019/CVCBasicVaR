@@ -5,6 +5,7 @@ Version: 0.1.0
 Author: Massimo Caprari, Anastasiya Varvus, Michele Cotugno
 Maintainer: Anastasiya Varvus <anastasiya.varvus@usi.ch>
 Description: The goal of this package is to provide some useful function for the computation of the Value at Risk with a parametric approach.
+Depends: quantmod
 Imports:quantmod
 License: GPL-2
 Encoding: UTF-8
