@@ -7,7 +7,7 @@
 Single_VaR(return, confidence_level, wealth, T)
 }
 \arguments{
-\item{return}{a class "xts" element: time serie of returns. In order to get it, it is recommended to use \code{\link[TEST:Return_Download]{Return_Download}} function}
+\item{return}{a class "xts" element: time serie of returns. In order to get it, it is recommended to use \code{\link[CVCBasicVaR:Return_Download]{Return_Download}} function}
 
 \item{confidence_level}{a number between 0 and 1 that specifies what is the confidence level to use in the computation}
 
@@ -15,21 +15,26 @@ Single_VaR(return, confidence_level, wealth, T)
 
 \item{T}{a number that specifies the time interval (in days) based on which the Value at Risk is computed}
 }
+\value{
+The function returns a class "data.frame" object containing the VaR of every assets for its relative monetary exposure specified.
+It also returns some inputs of the function itself (Confidence level, time interval).
+}
 \description{
 Using the Asset Normal Approach, the function computes the Value at Risk for a given time series of return and vector of positions.
 }
 \examples{
+## Not Run:
 Stocks <- c("GE", "AAPL", "BA", "DB", "FORD", "^DJI")
 Returns <- Return_Download(Stocks, 4, from = Sys.Date()-365.25*3, to = Sys.Date())
 Wealth <- c(100000, 50000, 130000, 75000, 500000, 930000)
 IndividualVaR <- SingleVaR(Returns, 0.99, Wealth, 10)
-
+## End (Not run)
 }
 \references{
 \href{https://finance.yahoo.com/}{Yahoo Finance}
 }
 \seealso{
-\code{\link[quantmod:quantmod]{quantmod}}, \code{\link[quantmod:getSymbols.yahoo]{getSymbols.yahoo}}, \code{\link[TEST:Return_Download]{Return_Download}},
+\code{\link[quantmod:quantmod]{quantmod}}, \code{\link[quantmod:getSymbols.yahoo]{getSymbols.yahoo}}, \code{\link[CVCBasicVaR:Return_Download]{Return_Download}},
  \code{\link[quantmod:dailyReturn]{dailyReturn}},
 }
 \author{

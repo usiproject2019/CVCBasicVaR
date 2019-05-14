@@ -7,7 +7,7 @@
 Portfolio_VaR(return, confidence_level, wealth, T)
 }
 \arguments{
-\item{return}{a class "xts" element: time serie of returns. In order to get it, it is recommended to use \code{\link[TEST:Return_Download]{Return_Download}} function}
+\item{return}{a class "xts" element: time serie of returns. In order to get it, it is recommended to use \code{\link[CVCBasicVaR:Return_Download]{Return_Download}} function}
 
 \item{confidence_level}{a number between 0 and 1 that specifies what is the confidence level to use in the computation}
 
@@ -15,21 +15,26 @@ Portfolio_VaR(return, confidence_level, wealth, T)
 
 \item{T}{a number that specifies the time interval (in days) based on which the Value at Risk is computed}
 }
+\value{
+The function returns a class "matrix" object containing the VaR of the portfolio for the pre-specified monetary exposure.
+It also returns some inputs of the function itself (Confidence level, time interval).
+}
 \description{
 Using the Asset Normal Approach, the function computes the Value at Risk of a portfolio for a given time series of returns and a vector of monetary positions.
 }
 \examples{
+## Not Run:
 Stocks <- c("GE", "AAPL", "BA", "DB", "FORD", "^DJI")
 Returns <- Return_Download(Stocks, 4, from = Sys.Date()-365.25*3, to = Sys.Date())
 Wealth <- c(100000, 50000, 130000, 75000, 500000, 930000)
 PortfolioVaR <- Portfolio_VaR(Returns, 0.99, Wealth, 10)
-
+## End (Not run)
 }
 \references{
 \href{https://finance.yahoo.com/}{Yahoo Finance}, \href{https://www.investopedia.com/ask/answers/041715/what-variancecovariance-matrix-or-parametric-method-value-risk-var.asp}{Investopedia}
 }
 \seealso{
-\code{\link[quantmod:quantmod]{quantmod}}, \code{\link[quantmod:getSymbols.yahoo]{getSymbols.yahoo}}, \code{\link[TEST:Return_Download]{Return_Download}},
+\code{\link[quantmod:quantmod]{quantmod}}, \code{\link[quantmod:getSymbols.yahoo]{getSymbols.yahoo}}, \code{\link[CVCBasicVaR:Return_Download]{Return_Download}},
  \code{\link[quantmod:dailyReturn]{dailyReturn}},
 }
 \author{

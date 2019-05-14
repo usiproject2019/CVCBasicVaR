@@ -21,7 +21,7 @@ Return_Download(ticker, price_type = 4, from, to)
 \item{to}{a class "date" element. It specifies until when the returns will be computed (date of the last observation)}
 }
 \value{
-a class "xts" element that contains the daily returns of each specified company in the specified time-interval
+The function returns a class "xts" object that contains the daily returns of each pre-specified company in the pre-specified time-interval
 }
 \description{
 The function computes daily returns from Yahoo Finance for a single company or for a vector that contains
@@ -29,18 +29,19 @@ the tickers of several companies. Note that this function is based on the functi
 package
 }
 \examples{
+## Not run:
 Return_Download("^DJI", price_type = 4, from="2019-05-01", to="2019-05-10")
 
 
 Stocks <- c("GE", "FORD", "BA", "^DJI", "DB")
 Returns <- Return_Download(Stocks, 4, from = "2019-05-01", to = "2019-05-10")
-
+## End (Not run)
 }
 \references{
 \href{https://finance.yahoo.com/}{Yahoo Finance}
 }
 \seealso{
-\code{\link[quantmod:getSymbols.yahoo]{getSymbols.yahoo}}, \code{\link[TEST:Price_Download]{Price_Download}}, \code{\link[quantmod:dailyReturn]{dailyReturn}}
+\code{\link[quantmod:getSymbols.yahoo]{getSymbols.yahoo}}, \code{\link[CVCBasicVaR:Price_Download]{Price_Download}}, \code{\link[quantmod:dailyReturn]{dailyReturn}}
 }
 \author{
 Massimo Caprari, Anastasiya Varvus, Michele Cotugno (CVC)

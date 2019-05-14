@@ -15,7 +15,7 @@
 #' @param from a class "date" element. It specifies the starting date from which the data will be downloaded (date of the first observation)
 #' @param to a class "date" element. It specifies until when the data will be downloaded (date of the last observation)
 #'
-#' @return a class "xts" element that contains the downloaded prices/volume of each specified company in the specified time-interval
+#' @return The function returns a class "xts" object that contains the downloaded prices/volume of each specified company in the specified time-interval
 #'
 #' @author Massimo Caprari, Anastasiya Varvus, Michele Cotugno (CVC)
 #'
@@ -24,12 +24,13 @@
 #' @seealso \code{\link[quantmod:getSymbols.yahoo]{getSymbols.yahoo}}
 #'
 #' @examples
+#' ## Not run:
 #' Price_Download("^DJI", , "2019-05-01", "2019-05-10")
 #'
 #'
 #' Stocks <- c("GE", "FORD", "BA", "^DJI", "DB")
 #' Prices <- Price_Download(Stocks, 4, from = "2019-05-01", to = "2019-05-10")
-#'
+#'## End (Not run)
 #' @export
 Price_Download <- function(ticker, price_type = 4, from, to) {
   Price <- lapply(ticker, function(i) {(getSymbols(i, from = from, to = to, auto.assign=FALSE, src=)[, price_type])})

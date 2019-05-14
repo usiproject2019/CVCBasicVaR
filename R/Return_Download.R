@@ -14,22 +14,23 @@
 #' @param from a class "date" element. It specifies the starting date on which the returns will be computed (date of the first observation). Note that, as the returns are calculated using the arithmetic approach, the first observation will be lost.
 #' @param to a class "date" element. It specifies until when the returns will be computed (date of the last observation)
 #'
-#' @return a class "xts" element that contains the daily returns of each specified company in the specified time-interval
+#' @return The function returns a class "xts" object that contains the daily returns of each pre-specified company in the pre-specified time-interval
 #'
 #' @author Massimo Caprari, Anastasiya Varvus, Michele Cotugno (CVC)
 #'
 #' @references \href{https://finance.yahoo.com/}{Yahoo Finance}
 #'
-#' @seealso \code{\link[quantmod:getSymbols.yahoo]{getSymbols.yahoo}}, \code{\link[TEST:Price_Download]{Price_Download}}, \code{\link[quantmod:dailyReturn]{dailyReturn}}
+#' @seealso \code{\link[quantmod:getSymbols.yahoo]{getSymbols.yahoo}}, \code{\link[CVCBasicVaR:Price_Download]{Price_Download}}, \code{\link[quantmod:dailyReturn]{dailyReturn}}
 #'
 #'
 #' @examples
+#' ## Not run:
 #' Return_Download("^DJI", price_type = 4, from="2019-05-01", to="2019-05-10")
 #'
 #'
 #' Stocks <- c("GE", "FORD", "BA", "^DJI", "DB")
 #' Returns <- Return_Download(Stocks, 4, from = "2019-05-01", to = "2019-05-10")
-#'
+#'## End (Not run)
 #' @export
 Return_Download <- function (ticker, price_type=4, from, to) {
   if (price_type ==5) {print("ERROR! Returns must be computed on prices, not on volume! Please select a different value for the variable: price_type")}

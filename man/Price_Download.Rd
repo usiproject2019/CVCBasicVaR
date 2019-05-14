@@ -22,7 +22,7 @@ Price_Download(ticker, price_type = 4, from, to)
 \item{to}{a class "date" element. It specifies until when the data will be downloaded (date of the last observation)}
 }
 \value{
-a class "xts" element that contains the downloaded prices/volume of each specified company in the specified time-interval
+The function returns a class "xts" object that contains the downloaded prices/volume of each specified company in the specified time-interval
 }
 \description{
 Download daily price or volume from yahoo finance for a single company or for a vector that contains
@@ -30,12 +30,13 @@ the tickers of several companies. Note that this function is based on the \code{
 package. Note that in order to have an omogeneous output all rows containing at least one missing observation will be deleted.
 }
 \examples{
+## Not run:
 Price_Download("^DJI", , "2019-05-01", "2019-05-10")
 
 
 Stocks <- c("GE", "FORD", "BA", "^DJI", "DB")
 Prices <- Price_Download(Stocks, 4, from = "2019-05-01", to = "2019-05-10")
-
+## End (Not run)
 }
 \references{
 \href{https://finance.yahoo.com/}{Yahoo Finance}
