@@ -30,6 +30,8 @@ Imports: quantmod
 
 License: GPL-2
 
+BugReports: <massimo.caprari@usi.ch>, <anastasiya.varvus@usi.ch>, <michele.cotugno@usi.ch>
+
 Encoding: UTF-8
 
 LazyData: true
