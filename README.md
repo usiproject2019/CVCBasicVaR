@@ -1,6 +1,6 @@
-<<<<<<< HEAD
-# packageCVCBasicVaR
-=======
+
+
+
 # CVCBasicVaR
 R package to simplify the computation of the Value at Risk with Parametric Approach.
 
