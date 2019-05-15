@@ -14,7 +14,7 @@
 #' @references \href{https://finance.yahoo.com/}{Yahoo Finance}, \href{https://www.investopedia.com/ask/answers/041715/what-variancecovariance-matrix-or-parametric-method-value-risk-var.asp}{Investopedia}
 #'
 #' @seealso \code{\link[quantmod:quantmod]{quantmod}}, \code{\link[quantmod:getSymbols.yahoo]{getSymbols.yahoo}}, \code{\link[CVCBasicVaR:Return_Download]{Return_Download}},
-#'  \code{\link[quantmod:dailyReturn]{dailyReturn}},
+#'  \code{\link[quantmod:dailyReturn]{dailyReturn}}
 #'
 #' @examples
 #' ## Not Run:

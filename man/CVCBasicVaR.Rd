@@ -11,14 +11,14 @@ Download Data Efficiently and Compute Value at Risk with Parametric Approach
 \details{
 Package:                                              CVCBasicVaR \cr
 Type:                   Package \cr
-Version:                                    0.0.1 \cr
+Version:                                    0.1.1 \cr
 Date:                   2019-14-05 \cr
 Depends:                                              R (>= 3.2.0), quantmod (>=0.4-13) \cr
 Imports:                                    quantmod \cr
 Lazyload:                                             yes \cr
 License:                                    GPL-2 \cr
 URL:                                        https://github.com/usiproject2019/CVCBasicVaR \cr
-
+Repository:                                                     GitHub
 The goal of this package is to provide the tools to download prices and returns of stocks from
 Yahoo finance, store them in a manageble way and, by using them, compute basic operations that concerns
 Value at Risk.

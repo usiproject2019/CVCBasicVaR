@@ -35,7 +35,7 @@ PortfolioVaR <- Portfolio_VaR(Returns, 0.99, Wealth, 10)
 }
 \seealso{
 \code{\link[quantmod:quantmod]{quantmod}}, \code{\link[quantmod:getSymbols.yahoo]{getSymbols.yahoo}}, \code{\link[CVCBasicVaR:Return_Download]{Return_Download}},
- \code{\link[quantmod:dailyReturn]{dailyReturn}},
+ \code{\link[quantmod:dailyReturn]{dailyReturn}}
 }
 \author{
 Massimo Caprari, Anastasiya Varvus, Michele Cotugno (CVC)

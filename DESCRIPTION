@@ -1,6 +1,6 @@
 Package: CVCBasicVaR
 Type: Package
-Title: Computes the Basic Value at Risk with Parametric Approach
+Title: The Basic Value at Risk with Parametric Approach
 Version: 0.1.1
 Author: Massimo Caprari (massimo.caprari@usi.ch), Anastasiya Varvus (anastasiya.varvus@usi.ch), Michele Cotugno (michele.cotugno@usi.ch)
 Maintainer: Massimo Caprari <massimo.caprari@usi.ch>, Anastasiya Varvus <anastasiya.varvus@usi.ch>, Michele Cotugno <michele.cotugno@usi.ch>

@@ -6,14 +6,14 @@
 #'
 #' Package:    &emsp;&emsp;                                        CVCBasicVaR \cr
 #' Type:       &emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;    Package \cr
-#' Version:    &emsp;&nbsp;&nbsp;&emsp;                            0.0.1 \cr
+#' Version:    &emsp;&nbsp;&nbsp;&emsp;                            0.1.1 \cr
 #' Date:       &emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;    2019-14-05 \cr
 #' Depends:    &emsp;&emsp;                                        R (>= 3.2.0), quantmod (>=0.4-13) \cr
 #' Imports:    &emsp;&nbsp;&nbsp;&emsp;                            quantmod \cr
 #' Lazyload:   &emsp;&emsp;                                        yes \cr
 #' License:    &emsp;&nbsp;&nbsp;&emsp;                            GPL-2 \cr
 #' URL:        &emsp;&emsp;&emsp;&emsp;                            https://github.com/usiproject2019/CVCBasicVaR \cr
-#'
+#' Repository:                                                     GitHub
 #' The goal of this package is to provide the tools to download prices and returns of stocks from
 #' Yahoo finance, store them in a manageble way and, by using them, compute basic operations that concerns
 #' Value at Risk.
