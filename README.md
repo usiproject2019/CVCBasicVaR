@@ -42,7 +42,7 @@ Suggests:
 
 knitr,
 
-rmarkdown,
+rmarkdown
 
 VignetteBuilder: knitr
 
