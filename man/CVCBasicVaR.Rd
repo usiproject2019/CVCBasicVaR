@@ -17,7 +17,7 @@ Depends:                                              R (>= 3.2.0), quantmod
 Imports:                                    quantmod \cr
 Lazyload:                                             yes \cr
 License:                                    GPL-2 \cr
-URL:                                        https://github.com/usiproject2019/CVCBasicVaR \cr
+URL:                                        \href{https://github.com/usiproject2019/CVCBasicVaR}{https://github.com/usiproject2019/CVCBasicVaR} \cr
 Repository:                                                \href{https://github.com/}{GitHub}
 
 The goal of this package is to provide the tools to download prices and returns of stocks from

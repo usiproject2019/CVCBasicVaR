@@ -12,7 +12,7 @@
 #' Imports:    &emsp;&nbsp;&nbsp;&emsp;                            quantmod \cr
 #' Lazyload:   &emsp;&emsp;                                        yes \cr
 #' License:    &emsp;&nbsp;&nbsp;&emsp;                            GPL-2 \cr
-#' URL:        &emsp;&emsp;&emsp;&emsp;                            https://github.com/usiproject2019/CVCBasicVaR \cr
+#' URL:        &emsp;&emsp;&emsp;&emsp;                            \href{https://github.com/usiproject2019/CVCBasicVaR}{https://github.com/usiproject2019/CVCBasicVaR} \cr
 #' Repository: &emsp;                                              \href{https://github.com/}{GitHub}
 #'
 #' The goal of this package is to provide the tools to download prices and returns of stocks from
