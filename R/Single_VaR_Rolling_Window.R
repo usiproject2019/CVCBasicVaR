@@ -6,7 +6,7 @@
 #'
 #' @param price a class "xts" element: time serie of prices In order to get it, it is recommended to use \code{\link[CVCBasicVaR:Price_Download]{Price_Download}} function
 #' @param wealth a numeric vector that specifies the monetary exposure assumed in every stock/index (note that the order of elements of the vector must reflect the order of the elements of the prices)
-#' @param reference_date  a class "date" element, it is the date on which the wealth is referred. It is used to compute the number of stocks for each assets.
+#' @param reference_date  a class "date" element, it is the date on which the wealth is referred. It is used to compute the number of stocks for each assets. Note that the chosen date must be a trading day for all the specified assets.
 #' @param window a class "numeric" element that specifies what is the time interval in days that will be used for the volatility computation
 #' @param confidence_level a number between 0 and 1 that specifies what is the confidence level to use in the computation
 #' @param T a number that specifies the time interval (in days) based on which the Value at Risk is computed

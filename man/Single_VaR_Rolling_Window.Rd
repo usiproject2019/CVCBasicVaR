@@ -12,7 +12,7 @@ Single_VaR_Rolling_Window(price, wealth, reference_date, window,
 
 \item{wealth}{a numeric vector that specifies the monetary exposure assumed in every stock/index (note that the order of elements of the vector must reflect the order of the elements of the prices)}
 
-\item{reference_date}{a class "date" element, it is the date on which the wealth is referred. It is used to compute the number of stocks for each assets.}
+\item{reference_date}{a class "date" element, it is the date on which the wealth is referred. It is used to compute the number of stocks for each assets. Note that the chosen date must be a trading day for all the specified assets.}
 
 \item{window}{a class "numeric" element that specifies what is the time interval in days that will be used for the volatility computation}
 
