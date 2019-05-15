@@ -26,7 +26,7 @@ Value at Risk.
 \emph{What CVCBasicVaR is}
 
 A useful tool to easy download prices and returns and organize them in a simple and efficient way,
-providing also a intuitive visulalization of the downloaded data. It provides also useful functions
+with an intuitive visualization of the downloaded data. It provides also useful functions
 to compute with the Parametric Approach the Value at Risk for single stocks or for an entire portfolio.
 
 \emph{What CVCBasicVaR is not}

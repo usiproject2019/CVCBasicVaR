@@ -18,9 +18,9 @@
 #' @examples
 #' ## Not Run:
 #' Ticker <- c("GE","BA")
-#' Returns <- Return_Download(myticker, 4, "2008-01-01", "2018-01-01")
+#' Return <- Return_Download(myticker, 4, "2008-01-01", "2018-01-01")
 #' Window <- c(10000)
-#' Window_Volatility <- Rolling_Window_Volatility(myreturns, mywindow)
+#' Window_Volatility <- Rolling_Window_Volatility(Return, Window)
 #'
 #' ## End (Not run)
 #'

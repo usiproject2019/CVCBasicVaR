@@ -1,0 +1,516 @@
+
+<div style ="text-align: center">
+### Package 'CVCBasicVaR'<br> 
+### May 15, 2019
+<br>
+
+
+
+<div style ="text-align: left">
+**Type**    Package   <br>
+**Title**  The Basic Value at Risk with a Parametric Approach   <br>
+**Version** 0.1.1   <br>
+**Author(s)** Massimo Caprari [<massimo.caprari@usi.ch>], <br>
+&emsp; &emsp; &emsp; &emsp; &nbsp;Anastasiya Varvus [<anastasiya.varvus@usi.ch>],<br>
+&emsp; &emsp; &emsp; &emsp; &nbsp;Michele Cotugno [<michele.cotugno@usi.ch>]   <br>
+**Maintainer(s)**  Massimo Caprari [<massimo.caprari@usi.ch>], <br>
+&emsp; &emsp; &emsp; &emsp; &nbsp;&nbsp; Anastasiya Varvus [<anastasiya.varvus@usi.ch>],<br>
+&emsp; &emsp; &emsp; &emsp; &nbsp;&nbsp; Michele Cotugno [<michele.cotugno@usi.ch>]   <br>
+**Description** The goal of this package is to provide some useful function for the computation of the Value at Risk with a parametric approach.   <br>
+**Depends** quantmod   <br>
+**Imports** quantmod   <br>
+**Licens** GPL-2   <br>
+**Encoding** UTF-8   <br>
+**LazyData** true   <br>
+**RoxygenNote** 6.1.1   <br>
+**Suggests**: knitr <br> 
+&emsp; &emsp; &emsp; &emsp; &nbsp; rmarkdown <br>
+**VignetteBuilder** knitr <br>
+**Repository** github
+
+____________________________________________________________________________________________________________________________
+
+#### CVCBasicVaR &emsp;&emsp;&emsp;&emsp;  *Caprari Varvus Cotugno Basic Value at Risk*
+____________________________________________________________________________________________________________________________
+##### Description
+Download Data Efficiently and Compute Value at Risk with Parametric Approach
+
+##### Details
+
+Package: &emsp; &emsp; CVCBasicVaR <br> 
+Type:&emsp;&emsp;&emsp;&emsp; &emsp;Package <br>
+Version: &emsp;&emsp;&emsp;&nbsp; 0.1.1 <br>
+Date:&emsp; &emsp; &emsp; &emsp; 2019-14-05 <br>
+Depends:R &emsp; &nbsp;(>= 3.2.0), quantmod (>=0.4-13) <br>
+Imports: &emsp; &emsp; &nbsp; quantmod <br>
+Lazyload: &emsp; &emsp; yes <br>
+License: &emsp; &emsp; &nbsp; GPL-2 <br>
+URL: &emsp; &emsp; &emsp; &emsp; https://github.com/usiproject2019/CVCBasicVaR <br>
+
+
+The goal of this package is to provide the tools to download prices and returns of stocks from Yahoo finance, store them in a manageble way and, by using them, compute basic operations that concerns Value at Risk.
+
+*What CVCBasicVaR is*
+
+A useful tool to easy download prices and returns and organize them in a simple and efficient way, providing also a intuitive visulalization of the downloaded data. It provides also useful functions to compute with the Parametric Approach the Value at Risk for single stocks or for an entire portfolio.
+
+*What CVCBasicVaR is not*
+
+A replacement of quantmod, the package on which the download functions are based on, and a new Value at Risk approach. All the functions that provides the computation of the Value at Risk are based on the well known standard formula. Nothing new was added.
+
+##### Author(s)
+
+Massimo Caprari, Anastasiya Varvus, Michele Cotugno (CVC)
+
+
+____________________________________________________________________________________________________________________________
+
+#### Portfolio_Component_VaR &emsp;&emsp;&emsp;&emsp;  *Compute the Component Value at Risk of a Portfolio*
+____________________________________________________________________________________________________________________________
+##### Description
+
+Using the Asset Normal Approach, the function computes the Component Value at Risk of a portfolio for a given time series of returns and a vector of monetary positions. It reflects the contribution of each asset to the whole Portfolio VaR.
+
+##### Usage
+
+ ```Portfolio_Component_VaR(return, confidence_level, wealth, T)```
+
+##### Arguments
+
+**return** &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp;a class "xts" element: time serie of returns. In order to get it, it is recommended to use Return_Download function .<br>
+
+**confidence_level** &emsp; &emsp;a number between 0 and 1 that specifies what is the confidence level to use in the computation 
+
+**wealth** &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp;a numeric vector that specifies the monetary exposure assumed in every stock/index (note that the order of <br> &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp;elements of the vector must reflect the order of the elements of the returns)
+
+**T**	&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp;&nbsp;a number that specifies the time interval (in days) based on which the Value at Risk is computed <br>
+
+##### Value
+
+The function returns a class "matrix" object containing the Component VaR of every asset of the portfolio for its pre-specified monetary exposure. It also returns some inputs of the function itself (Confidence level, time interval).
+
+##### Author(s)
+
+Massimo Caprari, Anastasiya Varvus, Michele Cotugno (CVC)
+
+#### References
+
+[Yahoo Finance](https://finance.yahoo.com/), [Investopedia](https://www.investopedia.com/)
+
+##### See Also
+
+[quantmod](https://cran.r-project.org/web/packages/quantmod/index.html), [getSymbols.yahoo](https://www.rdocumentation.org/packages/quantmod/versions/0.4-14/topics/getSymbols), [Price_Download](https://github.com/usiproject2019/CVCBasicVaR), [dailyReturn](https://www.quantmod.com/documentation/periodReturn.html)
+
+##### Example
+
+'## Not run: <br>
+Stocks <- c("GE", "AAPL", "BA", "DB", "FORD", "^DJI")<br>
+Returns <- Return_Download(Stocks, 4, from = Sys.Date()-365.25*3, to = Sys.Date())<br>
+Wealth <- c(100000, 50000, 130000, 75000, 500000, 930000)<br>
+ComponentVaR <- Portfolio_Component_VaR(Returns, 0.99, Wealth, 10)<br>
+<br>
+'## End(Not run)
+
+____________________________________________________________________________________________________________________________
+
+#### Portfolio_Marginal_VaR  &emsp;&emsp;&emsp;&emsp;  *Compute the Marginal Value at Risk of a Portfolio*
+____________________________________________________________________________________________________________________________
+
+##### Description
+
+Using the Asset Normal Approach, the function computes the Marginal Value at Risk of a portfolio for a given time series of returns and a vector of monetary positions.
+
+##### Usage
+
+ ```Portfolio_Marginal_VaR(return, confidence_level, wealth, T)```
+
+##### Arguments
+
+**return** &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp;a class "xts" element: time serie of returns. In order to get it, it is recommended to use Return_Download function.<br>
+
+**confidence_level** &emsp; &emsp;a number between 0 and 1 that specifies what is the confidence level to use in the computation 
+
+**wealth** &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp;a numeric vector that specifies the monetary exposure assumed in every stock/index (note that the order of <br> &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp;elements of the vector must reflect the order of the elements of the returns)
+
+**T**	&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp;&nbsp;a number that specifies the time interval (in days) based on which the Value at Risk is computed <br>
+
+##### Value
+
+The function returns a class "matrix" object containing the Marginal VaR of every asset of the portfolio for its pre-specified monetary exposure. It also returns some inputs of the function itself (Confidence level, time interval).
+
+##### Author(s)
+
+Massimo Caprari, Anastasiya Varvus, Michele Cotugno (CVC)
+
+##### References
+
+[Yahoo Finance](https://finance.yahoo.com/), [Investopedia](https://www.investopedia.com/)
+
+##### See Also
+
+[quantmod](https://cran.r-project.org/web/packages/quantmod/index.html), [getSymbols.yahoo](https://www.rdocumentation.org/packages/quantmod/versions/0.4-14/topics/getSymbols), [Price_Download](https://github.com/usiproject2019/CVCBasicVaR), [dailyReturn](https://www.quantmod.com/documentation/periodReturn.html)
+
+##### Example
+
+'## Not run: <br>
+Stocks <- c("GE", "AAPL", "BA", "DB", "FORD", "^DJI")<br>
+Returns <- Return_Download(Stocks, 4, from = Sys.Date()-365.25*3, to = Sys.Date())<br>
+Wealth <- c(100000, 50000, 130000, 75000, 500000, 930000)<br>
+MarginalVaR <- Portfolio_Marginal_VaR(Returns, 0.99, Wealth, 10)<br>
+<br>
+'## End(Not run)
+
+
+
+____________________________________________________________________________________________________________________________
+
+#### Portfolio_Relative_Component_VaR &emsp;&emsp;&emsp;&emsp;  *Compute the Relative Component Value at Risk of a Portfolio*
+____________________________________________________________________________________________________________________________
+
+##### Description
+
+Using the Asset Normal Approach, the function computes the Relative Component Value at Risk of a portfolio for a given time series of returns and a vector of monetary positions. It reflects the contribution of each asset to the whole Portfolio VaR, as a fraction of the total Portfolio. The sum of all the fractions will be equal to 1.
+
+##### Usage
+
+ ```Portfolio_Relative_Component_VaR(return, confidence_level, wealth, T))```
+
+##### Arguments
+
+**return** &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp;a class "xts" element: time serie of returns. In order to get it, it is recommended to use Return_Download function .<br>
+
+**confidence_level** &emsp; &emsp;a number between 0 and 1 that specifies what is the confidence level to use in the computation 
+
+**wealth** &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp;a numeric vector that specifies the monetary exposure assumed in every stock/index (note that the order of <br> &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp;elements of the vector must reflect the order of the elements of the returns)
+
+**T**	&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp;&nbsp;a number that specifies the time interval (in days) based on which the Value at Risk is computed <br>
+
+##### Value
+
+The function returns a class "matrix" object containing the Relative Component VaR of every asset of the portfolio for its pre-specified monetary exposure. It also returns some inputs of the function itself (Confidence level, time interval).
+
+##### Author(s)
+
+Massimo Caprari, Anastasiya Varvus, Michele Cotugno (CVC)
+
+##### References
+
+[Yahoo Finance](https://finance.yahoo.com/), [Investopedia](https://www.investopedia.com/)
+
+##### See Also
+
+[quantmod](https://cran.r-project.org/web/packages/quantmod/index.html), [getSymbols.yahoo](https://www.rdocumentation.org/packages/quantmod/versions/0.4-14/topics/getSymbols), [Price_Download](https://github.com/usiproject2019/CVCBasicVaR), [dailyReturn](https://www.quantmod.com/documentation/periodReturn.html)
+
+##### Example
+
+'## Not run: <br>
+Stocks <- c("GE", "AAPL", "BA", "DB", "FORD", "^DJI")<br>
+Returns <- Return_Download(Stocks, 4, from = Sys.Date()-365.25*3, to = Sys.Date())<br>
+Wealth <- c(100000, 50000, 130000, 75000, 500000, 930000)<br>
+RelativeComponentVaR <- Portfolio_Relative_Component_VaR(Returns, 0.99, Wealth, 10)<br>
+<br>
+'## End(Not run)
+
+
+____________________________________________________________________________________________________________________________
+
+#### Portfolio_VaR &emsp;&emsp;&emsp;&emsp;  *Compute the Value at Risk for a Portfolio*
+____________________________________________________________________________________________________________________________
+
+##### Description
+
+Using the Asset Normal Approach, the function computes the Value at Risk of a portfolio for a given time series of returns and a vector of monetary positions.
+
+##### Usage
+
+ ```Portfolio_VaR(return, confidence_level, wealth, T```
+
+##### Arguments
+
+**return** &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp;a class "xts" element: time serie of returns. In order to get it, it is recommended to use Return_Download function.<br>
+
+**confidence_level** &emsp; &emsp;a number between 0 and 1 that specifies what is the confidence level to use in the computation 
+
+**wealth** &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp;a numeric vector that specifies the monetary exposure assumed in every stock/index (note that the order of <br> &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp;elements of the vector must reflect the order of the elements of the returns)
+
+**T**	&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp;&nbsp;a number that specifies the time interval (in days) based on which the Value at Risk is computed <br>
+
+##### Value
+
+The function returns a class "matrix" object containing the VaR of the portfolio for the pre-specified monetary exposure. It also returns some inputs of the function itself (Confidence level, time interval).
+
+##### Author(s)
+
+Massimo Caprari, Anastasiya Varvus, Michele Cotugno (CVC)
+
+##### References
+
+[Yahoo Finance](https://finance.yahoo.com/), [Investopedia](https://www.investopedia.com/)
+
+##### See Also
+
+[quantmod](https://cran.r-project.org/web/packages/quantmod/index.html), [getSymbols.yahoo](https://www.rdocumentation.org/packages/quantmod/versions/0.4-14/topics/getSymbols), [Price_Download](https://github.com/usiproject2019/CVCBasicVaR), [dailyReturn](https://www.quantmod.com/documentation/periodReturn.html)
+
+
+##### Example
+
+'## Not run: <br>
+Stocks <- c("GE", "AAPL", "BA", "DB", "FORD", "^DJI")<br>
+Returns <- Return_Download(Stocks, 4, from = Sys.Date()-365.25*3, to = Sys.Date())<br>
+Wealth <- c(100000, 50000, 130000, 75000, 500000, 930000)<br>
+PortfolioVaR <- Portfolio_VaR(Returns, 0.99, Wealth, 10)<br>
+<br>
+'## End(Not run)
+
+____________________________________________________________________________________________________________________________
+
+#### Price_Download &emsp;&emsp;&emsp;&emsp;  *Download Daily Price or Volume from Yahoo Finance*
+____________________________________________________________________________________________________________________________
+
+##### Description
+
+Download daily price or volume from Yahoo Finance for a single company or for a vector that contains the tickers of several companies. Note that this function is based on the  [getSymbols](https://www.rdocumentation.org/packages/quantmod/versions/0.4-14/topics/getSymbols) function of the [quantmod](https://cran.r-project.org/web/packages/quantmod/index.html). Note that in order to have an omogeneous output all rows containing at least one missing observation will be deleted.
+ 
+##### Usage
+
+ ```Price_Download (ticker, price_type = 4, from, to)```
+
+##### Arguments
+
+**ticker** &emsp; &emsp; &emsp; &emsp;a character vector of the Yahoo Finance ticker of the companies/indices for which prices/volume should be downloaded <br>
+
+**price_type** &emsp; &nbsp;  &nbsp;a number between 1 to 6 that specifies what is the base of the data that should  be downloaded (default = 4). 1 = Daily price, <br> &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp; 2 = Highest price, 3 = Lowest price,  4 = Closing price, 5 = Volume 6 = Adjusted price <br>
+
+**from** &emsp; &emsp; &emsp; &emsp; &nbsp;a class "date" element. It specifies the starting date from which the data will be downloaded (date of the first observation) <br>
+
+**to** &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp;  a class "date" element. It specifies until when the data will be downloaded (date of the last observation) <br>
+
+##### Value
+
+The function returns a class "xts" object that contains the downloaded prices/volume of each specified company in the specified time-interval
+
+##### Author(s)
+
+Massimo Caprari, Anastasiya Varvus, Michele Cotugno (CVC)
+
+##### References
+
+[Yahoo Finance](https://finance.yahoo.com/)
+
+#### See Also
+
+[getSymbols.yahoo](https://www.rdocumentation.org/packages/quantmod/versions/0.4-14/topics/getSymbols)
+
+##### Examples
+
+'## Not run: <br>
+Price_Download ("^DJI", , "2019-05-01", "2019-05-10")<br>
+<br>
+
+Stocks <- c("GE", "FORD", "BA", "^DJI", "DB")<br> 
+Prices <- Price_Download(Stocks, 4, from = "2019-05-01", to = "2019-05-10")<br>
+<br>
+'## End(Not run)
+
+
+____________________________________________________________________________________________________________________________
+
+#### Return_Download &emsp;&emsp;&emsp;&emsp;  *Compute Daily Returns of Selected Stocks/Indices from Yahoo Finance*
+____________________________________________________________________________________________________________________________
+
+##### Description
+
+The function computes daily returns from Yahoo Finance for a single company or for a vector that contains the tickers of several companies. Note that this function is based on the functions [getSymbols](https://www.rdocumentation.org/packages/quantmod/versions/0.4-14/topics/getSymbols) and [dailyReturn](https://www.rdocumentation.org/packages/quantmod/versions/0.4-14/topics/getSymbols) of the [quantmod](https://cran.r-project.org/web/packages/quantmod/index.html) package
+
+##### Usage
+
+ ```Return_Download(ticker, price_type = 4, from, to)```
+
+##### Arguments
+
+**ticker** &emsp; &emsp; &emsp; &emsp;a character vector of the Yahoo Finance ticker of the companies/indices for which the daily return will be computed.<br>
+
+**price_type** &emsp; &nbsp;  &nbsp;a number that specifies what is the base of the data on which the returns will be   computed (default = 4). 1 = Daily price, <br> &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp; 2 = Highest price, 3 = Lowest price, 4 = Closing price, 6 = Adjusted price <br>
+
+**from** &emsp; &emsp; &emsp; &emsp; &nbsp;a class "date" element. It specifies the starting date on which the returns will be computed (date of the first observation). <br> &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp; Note that, as the returns are calculated using the arithmetic approach, the first observation will be lost.  <br>
+
+**to** &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp;  a class "date" element. It specifies until when the returns will be computed (date of the last observation) <br>
+
+##### Value
+
+The function returns a class "xts" object that contains the daily returns of each pre-specified company in the pre-specified time-interval
+
+##### Author(s)
+
+Massimo Caprari, Anastasiya Varvus, Michele Cotugno (CVC)
+
+##### References
+
+[Yahoo Finance](https://finance.yahoo.com/), [Investopedia](https://www.investopedia.com/)
+
+##### See Also
+
+[getSymbols.yahoo](https://www.rdocumentation.org/packages/quantmod/versions/0.4-14/topics/getSymbols), [Price_Download](https://github.com/usiproject2019/CVCBasicVaR), [dailyReturn](https://www.quantmod.com/documentation/periodReturn.html)
+
+
+##### Examples
+
+'## Not run: <br>
+Return_Download("^DJI", price_type = 4, from="2019-05-01", to="2019-05-10")<br>
+<br>
+
+Stocks <- c("GE", "FORD", "BA", "^DJI", "DB")<br> 
+Returns <- Return_Download(Stocks, 4, from = "2019-05-01", to = "2019-05-10")<br>
+<br>
+'## End(Not run)
+
+____________________________________________________________________________________________________________________________
+
+#### Rolling_Window_Volatility &emsp;&emsp;&emsp;&emsp;  *Compute the Daily Volatility using a Rolling Window Approach*
+____________________________________________________________________________________________________________________________
+
+##### Description
+
+Using a rolling window approach, the function computes the daily volatility of a pre-specified vector of assets for given time series of returns.
+
+##### Usage
+
+ ```Rolling_Window_Volatility(return, window)```
+
+##### Arguments
+
+**return** &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp;a class "xts" element: time serie of returns. In order to get it, it is recommended to use Return_Download function .<br>
+
+
+**window** &emsp; &emsp; &emsp; &emsp;&emsp;&emsp; a class "numeric" element that specifies what is the time interval in days that will be used for the volatility computation<br> 
+
+##### Value
+
+The function returns a class "xts" object containing the volatility of the pre-specified assets for the pre-specified time window It also returns some inputs of the function itself (window).
+
+##### Author(s)
+
+Massimo Caprari, Anastasiya Varvus, Michele Cotugno (CVC)
+
+#### References
+
+[Yahoo Finance](https://finance.yahoo.com/), [Investopedia](https://www.investopedia.com/terms/r/rollingreturns.asp)
+
+##### See Also
+
+[quantmod](https://cran.r-project.org/web/packages/quantmod/index.html), [getSymbols.yahoo](https://www.rdocumentation.org/packages/quantmod/versions/0.4-14/topics/getSymbols), [Price_Download](https://github.com/usiproject2019/CVCBasicVaR), [dailyReturn](https://www.quantmod.com/documentation/periodReturn.html)
+
+##### Example
+
+'## Not run: <br>
+Ticker <- c("GE","BA")<br>
+Return <- Return_Download(myticker, 4, "2008-01-01", "2018-01-01")<br>
+Window <- c(10000)<br>
+Window_Volatility <- Rolling_Window_Volatility(Return, Window)<br>
+<br>
+'## End(Not run)
+
+
+____________________________________________________________________________________________________________________________
+#### Single_VaR &emsp;&emsp;&emsp;&emsp;  *Compute the Value at Risk for Single Positions*
+____________________________________________________________________________________________________________________________
+
+##### Description
+
+Using the Asset Normal Approach, the function computes the Value at Risk for a given time series of return and vector of positions.
+
+##### Usage
+
+ ```Single_VaR(return, confidence_level, wealth, T)```
+
+##### Arguments
+
+**return** &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp;a class "xts" element: time serie of returns. In order to get it, it is recommended to use Return_Download function.<br>
+
+**confidence_level** &emsp; &emsp;a number between 0 and 1 that specifies what is the confidence level to use in the computation 
+
+**wealth** &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&nbsp;a numeric vector that specifies the monetary exposure assumed in every stock/index (note that the order of elements <br> &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp; of the vector must reflect the order of the elements of the returns)
+
+**T**	&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp;&nbsp;a number that specifies the time interval (in days) based on which the Value at Risk is computed <br>
+
+##### Value
+
+The function returns a class "data.frame" object containing the VaR of every assets for its relative monetary exposure specified. It also returns some inputs of the function itself (Confidence level, time interval).
+
+##### Author(s)
+
+Massimo Caprari, Anastasiya Varvus, Michele Cotugno (CVC)
+
+#### References
+
+[Yahoo Finance](https://finance.yahoo.com/)
+
+#### See Also
+
+[quantmod](https://cran.r-project.org/web/packages/quantmod/index.html), [getSymbols.yahoo](https://www.rdocumentation.org/packages/quantmod/versions/0.4-14/topics/getSymbols), [Price_Download](https://github.com/usiproject2019/CVCBasicVaR), [dailyReturn](https://www.quantmod.com/documentation/periodReturn.html)
+
+#### Example
+
+'## Not run: <br>
+Stocks <- c("GE", "AAPL", "BA", "DB", "FORD", "^DJI")<br>
+Returns <- Return_Download(Stocks, 4, from = Sys.Date()-365.25*3, to = Sys.Date())<br>
+Wealth <- c(100000, 50000, 130000, 75000, 500000, 930000)<br>
+IndividualVaR <- SingleVaR(Returns, 0.99, Wealth, 10)<br>
+<br>
+'## End(Not run)
+
+
+____________________________________________________________________________________________________________________________
+
+#### Single_VaR_Rolling_Window  &emsp;&emsp;&emsp;&emsp;  *Compute the Value at Risk for Single Positions using a Rolling Window <br> &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; Approach*
+____________________________________________________________________________________________________________________________
+
+##### Description
+
+Using the Asset Normal Approach, the function computes the Value at Risk each day for different assets using a pre-specified time window for the volatility computation and a certain vector of monetary exposure in each stock/index in a given day.
+
+##### Usage
+
+ ```Single_VaR_Rolling_Window(price, wealth, reference_date, window, confidence_level, T)```
+
+##### Arguments
+
+**price** &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp;a class "xts" element: time serie of prices In order to get it, it is recommended to use Price_Download function
+
+**wealth** &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;a numeric vector that specifies the monetary exposure assumed in every stock/index (note that the order of elements <br> &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;of the vector must reflect the order of the elements of the prices)
+
+**reference_date** &emsp; &emsp; a class "date" element, it is the date on which the wealth is referred. It is used to compute the number of stocks for each <br> &emsp; &emsp; &emsp; &emsp;&emsp;&emsp;&emsp; &emsp; &emsp; &nbsp; assets.
+
+**window** &emsp; &emsp; &emsp; &emsp;&emsp;&emsp;a class "numeric" element that specifies what is the time interval in days that will be used for the volatility computation.
+
+**confidence_level**  &emsp; &nbsp;a number between 0 and 1 that specifies what is the confidence level to use in the computation 
+
+
+**T** &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; a number that specifies the time interval (in days) based on which the Value at Risk is computed <br>
+
+##### Value
+
+The function returns a class "xts" object that contains the daily VaRs of every assets for the its relative monetary exposure in a certain date and for a chosen window of observation. It also returns some inputs of the function itself (Confidence level, time interval).
+
+##### Author(s)
+
+Massimo Caprari, Anastasiya Varvus, Michele Cotugno (CVC)
+
+##### References
+
+[Yahoo Finance](https://finance.yahoo.com/), [Investopedia](https://www.investopedia.com/)
+
+##### See Also
+
+[quantmod](https://cran.r-project.org/web/packages/quantmod/index.html), [getSymbols.yahoo](https://www.rdocumentation.org/packages/quantmod/versions/0.4-14/topics/getSymbols), [Price_Download](https://github.com/usiproject2019/CVCBasicVaR), [Rolling_Window_Volatility](https://github.com/usiproject2019/CVCBasicVaR)
+
+
+##### Example
+
+'## Not run: <br>
+Stocks <- c("GE", "AAPL")<br>
+Price <- Price_Download(Stocks, 6, from = "2010-01-04", to = "2018-01-01")<br>
+Wealth <- c(100000, 50000)<br>
+RollingVaR <- Single_VaR_Rolling_Window(Price, Wealth, "2010-01-02", 250, 0.99, 1)<br>
+<br>
+'## End(Not run)
