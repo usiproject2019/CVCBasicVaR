@@ -46,7 +46,7 @@ Single_VaR_Rolling_Window <- function (price, wealth, reference_date, window, co
 
   alpha <- qnorm(confidence_level)
   SigmaW <- Wealth * Single_Volatility
-  Single_VaR_Rolling <- alpha * SigmaW*sqrt(T)
+  Single_VaR_Rolling <- alpha * SigmaW * sqrt(T)
 
   return_column_name <- data.frame(vector_column_name = c(colnames(price)))
   new_column_name <- gsub("[:.:].*\\w", "", return_column_name$vector_column_name)

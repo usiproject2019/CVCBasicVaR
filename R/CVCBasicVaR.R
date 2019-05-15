@@ -13,7 +13,8 @@
 #' Lazyload:   &emsp;&emsp;                                        yes \cr
 #' License:    &emsp;&nbsp;&nbsp;&emsp;                            GPL-2 \cr
 #' URL:        &emsp;&emsp;&emsp;&emsp;                            https://github.com/usiproject2019/CVCBasicVaR \cr
-#' Repository:                                                     GitHub
+#' Repository: &emsp;                                              \href{https://github.com/}{GitHub}
+#'
 #' The goal of this package is to provide the tools to download prices and returns of stocks from
 #' Yahoo finance, store them in a manageble way and, by using them, compute basic operations that concerns
 #' Value at Risk.
